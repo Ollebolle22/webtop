@@ -29,6 +29,4 @@ SKA INTE KÖRAS ONLINE! BARA LOKALT! Tailscale är att rekommendera
 📍 Gå till `http://<server-ip>:80`  
 (eller `http://<tailscale-IP>:80` om du kör via Tailscale)
 
-OBS!
-
-Du måste sätta env variabel UBUNTU_PASSWORD med value 'ditt egna lösenord' utan '
+Containern körs som root som standard. Ingen inloggning behövs.

@@ -8,7 +8,6 @@ services:
       - pico_shared:/home/ubuntu/shared
     restart: unless-stopped
     network_mode: host  # Krävs för Tailscale-access till port 80
-    user: "1000:1000"   # Se till att rätt UID kör (undvik root)
 
 volumes:
   pico_shared:
