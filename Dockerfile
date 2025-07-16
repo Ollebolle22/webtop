@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     openjdk-11-jre \
     xdotool \
     cron \
+    xvfb \
     wget curl gnupg2 software-properties-common \
     sudo supervisor net-tools unzip \
     && apt-get clean
