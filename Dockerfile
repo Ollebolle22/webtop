@@ -39,4 +39,5 @@ RUN chmod +x /startup.sh
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+USER ubuntu
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
