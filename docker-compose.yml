@@ -1,14 +1,14 @@
 version: "3"
+
 services:
   pico-webtop:
     image: ghcr.io/ollebolle22/webtop:latest
     container_name: pico_webtop
-    ports:
-      - "80:80"  # noVNC körs direkt på port 80
     volumes:
       - pico_shared:/home/ubuntu/shared
     restart: unless-stopped
-    network_mode: host  # gör att du kan nå den via Tailscale-IP
+    network_mode: host  # Krävs för Tailscale-access till port 80
+    user: "1000:1000"   # Se till att rätt UID kör (undvik root)
 
 volumes:
   pico_shared:
