@@ -1,42 +1,41 @@
 FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV USER=ubuntu
-ENV PASSWORD=secret
 
-# Uppdatera och installera alla paket
+# Installera nödvändiga paket
 RUN apt-get update && apt-get install -y \
-    xfce4 xfce4-goodies \
-    x11vnc \
-    novnc websockify \
-    openjdk-11-jre \
-    xdotool \
-    cron \
-    xvfb \
-    wget curl gnupg2 software-properties-common \
-    sudo supervisor net-tools unzip \
-    && apt-get clean
+  supervisor \
+  xfce4 \
+  x11vnc \
+  xvfb \
+  novnc \
+  websockify \
+  xdotool \
+  openjdk-11-jdk \
+  cron \
+  wget \
+  unzip \
+  gnupg \
+  && rm -rf /var/lib/apt/lists/*
 
-# Installera Google Chrome (stable)
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg && \
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
-    apt-get update && apt-get install -y google-chrome-stable
+# Installera Chrome
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+  && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
+  && apt-get update \
+  && apt-get install -y google-chrome-stable \
+  && rm -rf /var/lib/apt/lists/*
 
 # Skapa användare
-RUN useradd -m -s /bin/bash $USER && \
-    echo "$USER:$PASSWORD" | chpasswd && \
-    usermod -aG sudo $USER
+RUN useradd -ms /bin/bash ubuntu
 
-# Skapa lösenord för x11vnc
-RUN mkdir -p /home/$USER/.vnc && \
-    x11vnc -storepasswd $PASSWORD /home/$USER/.vnc/passwd && \
-    chown -R $USER:$USER /home/$USER/.vnc
+# Skapa loggkatalog
+RUN mkdir -p /var/log/supervisor && chown -R ubuntu:ubuntu /var/log/supervisor
 
-# Kopiera startfiler
+# Kopiera supervisor config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Exponera port 80
 EXPOSE 80
 
-RUN mkdir -p /var/log/supervisor && chown ubuntu:ubuntu /var/log/supervisor
-USER ubuntu
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Starta supervisord
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
