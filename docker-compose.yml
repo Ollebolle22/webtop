@@ -4,8 +4,6 @@ services:
   pico-webtop:
     image: ghcr.io/ollebolle22/webtop:latest
     container_name: pico_webtop
-    ports:
-      - "80:6080"
     volumes:
       - pico_shared:/home/ubuntu/shared
     restart: unless-stopped
