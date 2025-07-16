@@ -21,6 +21,7 @@ SKA INTE KÖRAS ONLINE! BARA LOKALT! Tailscale är att rekommendera
 ✅ xdotool (för GUI-automation)  
 ✅ cron (för framtida automatisering)  
 ✅ Ingen VNC-lösenkod i webbläsaren (enkel åtkomst)
+✅ Inget lösenord krävs vid start
 
 ---
 
@@ -29,4 +30,4 @@ SKA INTE KÖRAS ONLINE! BARA LOKALT! Tailscale är att rekommendera
 📍 Gå till `http://<server-ip>:80`  
 (eller `http://<tailscale-IP>:80` om du kör via Tailscale)
 
-Containern körs som root som standard. Ingen inloggning behövs.
+Containern körs som root som standard. Ingen inloggning eller lösenord behövs.
