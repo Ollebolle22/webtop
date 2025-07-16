@@ -7,6 +7,8 @@
 
 Tillgänglig direkt via Tailscale eller LAN på port `80`.
 
+SKA INTE KÖRAS ONLINE! BARA LOKALT! Tailscale är att rekommendera
+
 ---
 
 ## 🚀 Funktioner
@@ -27,4 +29,6 @@ Tillgänglig direkt via Tailscale eller LAN på port `80`.
 📍 Gå till `http://<server-ip>:80`  
 (eller `http://<tailscale-IP>:80` om du kör via Tailscale)
 
-Logga in i XFCE4-miljön som användare **`ubuntu`**. lösen **`secret`**
+OBS!
+
+Du måste sätta env variabel UBUNTU_PASSWORD med value 'ditt egna lösenord' utan '
