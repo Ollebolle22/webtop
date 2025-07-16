@@ -27,24 +27,4 @@ Tillgänglig direkt via Tailscale eller LAN på port `80`.
 📍 Gå till `http://<server-ip>:80`  
 (eller `http://<tailscale-IP>:80` om du kör via Tailscale)
 
-Logga in i XFCE4-miljön som användare **`ubuntu`**.
-
----
-
-## 🛠️ Användning med Docker Compose
-
-```yaml
-version: "3"
-services:
-  pico-webtop:
-    build: .
-    container_name: pico_webtop
-    ports:
-      - "80:80"
-    volumes:
-      - pico_shared:/home/ubuntu/shared
-    restart: unless-stopped
-    network_mode: host
-
-volumes:
-  pico_shared:
+Logga in i XFCE4-miljön som användare **`ubuntu`**. lösen **`secret`**
