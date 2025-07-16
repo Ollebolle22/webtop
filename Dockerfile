@@ -25,11 +25,8 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add
   && apt-get install -y google-chrome-stable \
   && rm -rf /var/lib/apt/lists/*
 
-# Skapa användare
-RUN useradd -ms /bin/bash ubuntu
-
 # Skapa loggkatalog
-RUN mkdir -p /var/log/supervisor && chown -R ubuntu:ubuntu /var/log/supervisor
+RUN mkdir -p /var/log/supervisor
 
 # Kopiera supervisor config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
