@@ -33,11 +33,10 @@ RUN mkdir -p /home/$USER/.vnc && \
     chown -R $USER:$USER /home/$USER/.vnc
 
 # Kopiera startfiler
-COPY startup.sh /startup.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN chmod +x /startup.sh
 
 EXPOSE 80
 
+RUN mkdir -p /var/log/supervisor && chown ubuntu:ubuntu /var/log/supervisor
 USER ubuntu
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
