@@ -1,5 +1,5 @@
 # webtop
-✅ Ubuntu 22.04 ✅ XFCE desktop ✅ x11vnc + noVNC på port 6080 ✅ Java (OpenJDK 11) ✅ Google Chrome ✅ xdotool, cron ✅ Supervisor för enkel hantering
+✅ Ubuntu 22.04 ✅ XFCE desktop ✅ x11vnc + noVNC på port 6080 ✅ Java (OpenJDK 11) ✅ Chromium ✅ xdotool, cron ✅ Supervisor för enkel hantering
 
 # 🖥️ Pico Webtop
 
@@ -18,7 +18,7 @@ SKA INTE KÖRAS ONLINE! BARA LOKALT! Tailscale är att rekommendera
 ✅ XFCE4 skrivbordsmiljö  
 ✅ x11vnc + noVNC (åtkomst via webbläsare)  
 ✅ Java (OpenJDK 11)  
-✅ Google Chrome  
+✅ Chromium
 ✅ xdotool (för GUI-automation)  
 ✅ cron (för framtida automatisering)  
 ✅ Ingen VNC-lösenkod i webbläsaren (enkel åtkomst)
