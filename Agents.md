@@ -53,6 +53,7 @@ This `agents.md` file defines both the agent architecture and operational guidan
 ---
 
 ## 📁 Project Structure for Codex Navigation
+finns inte mapparna så skapar du dem
 
 - `/src`: Python source files
   - `/modules`: Reusable functional or class-based modules
